@@ -1,0 +1,19 @@
+{
+  "name": "Next.js + Laravel TODO",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "frontend",
+  "workspaceFolder": "/workspaces/nextjs-laravel",
+  "runServices": ["frontend", "backend"],
+  "forwardPorts": [3000, 8000],
+  "portsAttributes": {
+    "3000": { "label": "Next.js" },
+    "8000": { "label": "Laravel API" }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postStartCommand": "bash .devcontainer/post-start.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "bmewburn.vscode-intelephense-client", "xdebug.php-debug"]
+    }
+  }
+}
