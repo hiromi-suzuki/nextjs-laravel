@@ -10,7 +10,6 @@
     "8000": { "label": "Laravel API" }
   },
   "postCreateCommand": "bash .devcontainer/post-create.sh",
-  "postStartCommand": "bash .devcontainer/post-start.sh",
   "features": {
     "ghcr.io/devcontainers/features/sshd:1": {
       "version": "latest"

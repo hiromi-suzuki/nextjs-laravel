@@ -3,20 +3,3 @@ set -euo pipefail
 
 cd /workspaces/nextjs-laravel/frontend
 npm install
-
-mkdir -p /workspaces/nextjs-laravel/backend
-cd /workspaces/nextjs-laravel/backend
-if [ ! -f artisan ]; then
-  composer create-project laravel/laravel . --no-interaction
-fi
-php artisan install:api --no-interaction
-cp -f /workspaces/nextjs-laravel/backend-template/routes/api.php routes/api.php
-cp -f /workspaces/nextjs-laravel/backend-template/app/Http/Controllers/TodoController.php app/Http/Controllers/TodoController.php
-cp -f /workspaces/nextjs-laravel/backend-template/app/Models/Todo.php app/Models/Todo.php
-cp -f /workspaces/nextjs-laravel/backend-template/database/migrations/2026_08_28_000000_create_todos_table.php database/migrations/2026_08_28_000000_create_todos_table.php
-touch database/database.sqlite
-if [ ! -f .env ]; then cp .env.example .env; fi
-sed -i 's|^DB_CONNECTION=.*|DB_CONNECTION=sqlite|' .env
-sed -i 's|^DB_DATABASE=.*|DB_DATABASE=/workspaces/nextjs-laravel/backend/database/database.sqlite|' .env
-php artisan key:generate --force
-php artisan migrate --force

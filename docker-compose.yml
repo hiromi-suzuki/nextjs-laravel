@@ -17,6 +17,6 @@ services:
     working_dir: /workspaces/nextjs-laravel/backend
     volumes:
       - .:/workspaces/nextjs-laravel:cached
-    command: sh -c 'until [ -f artisan ]; do sleep 2; done; php artisan serve --host=0.0.0.0 --port=8000'
+    command: bash -c 'bash /workspaces/nextjs-laravel/.devcontainer/backend-setup.sh && php artisan serve --host=0.0.0.0 --port=8000'
     ports:
       - "8000:8000"
